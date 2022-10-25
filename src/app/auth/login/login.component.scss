@@ -1,0 +1,54 @@
+.login{
+    display: grid;
+    grid-template-columns: 60% 40%;
+}
+
+.ImgLogin img{
+    height: 100vh;
+    width: 100%;
+}
+
+.Content_Form{
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    justify-content: center;
+}
+
+.p_IniciaSesion{
+    font-size: 30px;
+    padding-bottom: 10%;
+}
+
+.formulario{
+    display: grid;
+}
+
+.botones{
+    display: block;
+    
+    button{
+        width: 100%;
+        margin: 2%;
+    }
+}
+
+
+.p_olvidoContraseña{
+    text-align: right;
+    display: block;
+    padding-bottom: 10%;
+}
+
+
+  
+@media (max-width : 700px){
+    .ImgLogin{
+        display: none;
+    }
+    .login{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+}

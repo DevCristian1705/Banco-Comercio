@@ -1,0 +1,191 @@
+<div class="_encabezado_landing">
+    <div >
+        <!-- NAVBAR -->
+        <div class="_navbar">
+            <div class="_flex">
+                <img src="../assets/images/logo.PNG" class="_navbar_items" alt="">
+                <div class="menu-large">
+                    <button mat-button>Feature</button>  
+                    <button mat-button>Pricing</button>
+                    <button mat-button>Carrers</button>
+                    <button mat-button>Ayuda</button>
+                </div> 
+            </div> 
+            <div class="flex_movile">
+                <div class="botones-menu-medio">
+                    <button mat-raised-button color="primary" (click)="onLogin()">Inicia sesión</button>
+                    <button class="btn_Registro"  mat-stroked-button > Registrate</button>
+                </div>
+                <div class="menu-medio">
+                    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                        <mat-icon>view_headline</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                        <button mat-button>Feature</button>  
+                        <button mat-button>Pricing</button>
+                        <button mat-button>Carrers</button>
+                        <button mat-button>Ayuda</button>
+                    </mat-menu>
+                </div> 
+            </div>  
+        </div> 
+    </div>
+    
+    <!-- BLOQUE INFO  --> 
+    <div class="bloque_cabecera"> 
+        <div class="info_bloque_1">
+            <h2 class="titulo_bloque_1"> The easiest way to manage projects </h2>
+            <p> From the small stuff to the big picture, organizes the work so teams know what to do,why it matters, and how to get it done. </p>
+            <br>
+            <div>
+                <button mat-raised-button color="primary">Get Stared</button>
+                <button mat-button>   <mat-icon>play_circle_outline</mat-icon>    Wacth Video</button>
+            </div>  
+        </div>
+
+        <div class="img_info_1">
+            <img src="../assets/images/celular-landing.png" alt=""> 
+        </div>
+    </div> 
+
+    <div class="centrar">
+        <p class="titulo_bloque_2"> Tailor-made features </p>
+        <p> Lorem ipsum is common placeholder text used to demonstrate the graphic elements of a document or visual presentation. </p>
+    
+        <div class="grilla_1">
+            <div>
+                <img src="../assets/images/logoG1.PNG" alt=""> 
+                <p class="titulo_grilla_1">
+                    Robust workflow
+                </p>
+                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, itaque inventore .
+            </div>
+            <div>
+                <img src="../assets/images/logoG2.PNG" alt=""> 
+                <p class="titulo_grilla_1">
+                    Flexibility
+                </p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, itaque inventore .
+            </div>
+            <div>
+                <img src="../assets/images/logoG3.PNG" alt=""> 
+                <p class="titulo_grilla_1">
+                    User friendly
+                </p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, itaque inventore .
+            </div>
+            <div>
+                <img src="../assets/images/logoG4.PNG" alt=""> 
+                <p class="titulo_grilla_1">
+                    Multiple layouts
+                </p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, itaque inventore .
+            </div>
+            <div>
+                 <img src="../assets/images/logoG5.PNG" alt=""> 
+                <p class="titulo_grilla_1">
+                    Better components
+                </p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, itaque inventore .
+            </div>
+            <div>
+                 <img src="../assets/images/logoG6.PNG" alt=""> 
+                <p class="titulo_grilla_1">
+                    Well organised
+                </p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, itaque inventore .
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="grilla_bloque_2">
+    
+        <div class="info_bloque_2">
+            <p class="titulo_bloque_2">
+                Our 18 years of achievements
+            </p> 
+            <p>
+                With our super powers we have reached this
+            </p>
+        </div>
+    
+    
+        <div class="Sub_grilla">
+            <div class="Sub_grilla_info"> 
+                <img src="../assets/images/logoG1.PNG" alt=""> 
+                <div>
+                    <p class="titulo_subgrilla_1"> 10,000 +   </p>  
+                    Download per day
+                </div>  
+            </div>
+        
+            <div class="Sub_grilla_info"> 
+                <img src="../assets/images/logoG4.PNG" alt=""> 
+                <div>
+                    <p class="titulo_subgrilla_1"> 2 Millions </p>
+                    Users
+                </div> 
+            </div>  
+            <div class="Sub_grilla_info"> 
+                <img src="../assets/images/logoG5.PNG" alt=""> 
+                <div>
+                    <p class="titulo_subgrilla_1"> 500 +   </p>  
+                    Clients
+                </div>  
+            </div>
+        
+            <div class="Sub_grilla_info"> 
+                <img src="../assets/images/logoG6.PNG" alt=""> 
+                <div>
+                    <p class="titulo_subgrilla_1"> 140 </p>
+                    Countries
+                </div> 
+            </div> 
+        </div>
+         
+    </div>
+    
+    <!-- Footer -->
+    
+    <div class="grilla_bloque_footer">
+    
+        <div class="footer_bloque_1">
+            <img src="../assets/images/piePagina.PNG" class="_navbar_items" alt="">
+            <div class="_flex"> 
+                <button mat-button>Download Now</button>  
+                <button mat-button>License</button> 
+            </div> 
+            <div class="_flex cambiar_movile"> 
+                <button mat-button>About</button>  
+                <button mat-button>Features</button>
+                <button mat-button>Pricing</button>
+                <button mat-button>Help</button>
+                <button mat-button>Contact</button>
+            </div> <br>
+            <p class="pl-4"> © {{ AnioActual }} Landify UI Kit. All rights reserved  </p> 
+        </div>
+    
+    
+        <div class="footer_bloque_1 footer_bloque_movile">
+            <img src="../assets/images/piePagina.PNG" class="_navbar_items" alt="">
+            <div class="_flex"> 
+                <button mat-button> Contáctanos</button>   
+            </div> 
+            <div class="_flex"> 
+                <button mat-button>Whatssaps</button>  
+                <button mat-button>978 566 567</button>
+                <button mat-button>967 567 565</button> 
+            </div> <br>
+            <p class="pl-4"> © {{ AnioActual }} Landify UI Kit. All rights reserved  </p> 
+        </div>
+    
+        <div>   
+            <p class="titulo_footer"> Get the App </p>    
+            <img class="img_footer" src="../assets/images/piePagina2.PNG" alt="">  
+        </div>
+         
+    </div>
+    
+</div>
+
