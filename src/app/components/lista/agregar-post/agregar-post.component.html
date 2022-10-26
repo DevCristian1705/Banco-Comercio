@@ -28,7 +28,7 @@
                 </mat-error>
             </mat-form-field> 
             <div mat-dialog-actions align="center">
-                <button mat-raised-button color="primary" class="btn_guardar_post" (click)="onSave()">  
+                <button mat-raised-button color="primary" class="btn_guardar_post" (click)="onSave()" (keydown.enter)="onSave()">  
                     <mat-icon>save</mat-icon> 
                      GUARDAR
                 </button> 

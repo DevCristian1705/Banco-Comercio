@@ -18,6 +18,9 @@ export class LandingComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onLista(){
+    this.router.navigate(['/components/lista'])
+  }
 
   onLogin(){
     this.router.navigate(['/auth'])

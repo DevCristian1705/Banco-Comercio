@@ -12,9 +12,9 @@ export class AuthService
 
     constructor(
         private _httpClient: HttpClient
-    )
-    {}
+    ){}
 
+    /* SETEAMOS TOKEN EN EL LOCALSTORAGE */
     set accessToken(token: string){
         localStorage.setItem('accessToken', token);
     }
@@ -24,10 +24,8 @@ export class AuthService
     }
 
    
-    signIn( data : IAuth): Observable<any>
-    { 
-        if ( this._authenticated )
-        {
+    signIn( data : IAuth): Observable<any>{ 
+        if ( this._authenticated ){
             return throwError('User is already logged in.');
         }
 

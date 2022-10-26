@@ -49,12 +49,21 @@ export class AgregarPostComponent implements OnInit {
     const newPost = this.form.getRawValue(); 
     newPost.userId = this.data.id 
     
+
     this.apiService.save(newPost).subscribe((response) => {
       if (response) {  
         let myArrayLocal = JSON.parse(localStorage.getItem('posts')!);
-        myArrayLocal.push(response);
-        let arrayPost =  JSON.stringify(myArrayLocal);
-        localStorage.setItem('posts', arrayPost) 
+        if(myArrayLocal){
+          myArrayLocal.push(response);
+          let arrayPost =  JSON.stringify(myArrayLocal);
+          localStorage.setItem('posts', arrayPost) 
+        }else{
+          let myArrayLocalVacio = []
+          myArrayLocalVacio.push(response);  
+          let arrayPost =  JSON.stringify(myArrayLocalVacio);
+          localStorage.setItem('posts', arrayPost) 
+        }
+      
 
         this.matSnackBar.open(
           'Post registrado con éxito.' , 'Cerrar',

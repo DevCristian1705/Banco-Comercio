@@ -16,17 +16,14 @@ export class AuthGuard implements CanActivate,  CanLoad{
     ){}
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean{
+        console.log('bloqueado por CANACTIVE'); 
         const redirectUrl = state.url === '/auth' ? '/' : state.url;
         return this._check(redirectUrl);
     }
-
-    // canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree{
-    //     const redirectUrl = state.url === '/sign-out' ? '/' : state.url;
-    //     return this._check(redirectUrl);
-    // }
-
+  
     canLoad(route: Route, segments: UrlSegment[]): Observable<boolean> | Promise<boolean> | boolean{
-        return this._check('/');
+        console.log('bloqueado por CANLOAD'); 
+        return this._check('/components');
     }
 
 
@@ -34,7 +31,7 @@ export class AuthGuard implements CanActivate,  CanLoad{
         return this._authService.check().pipe(
             switchMap((authenticated) => {
                 if ( !authenticated ){
-                    this._router.navigate(['/auth'], {queryParams: {redirectURL}});
+                    this._router.navigate(['/auth']);
                     return of(false);
                 }
                 return of(true);

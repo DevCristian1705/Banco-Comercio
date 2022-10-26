@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router'; 
-import { AuthGuard } from './auth/mock-api/auth.guard';
 
 const routes: Routes = [
   { 
@@ -10,8 +9,6 @@ const routes: Routes = [
   { 
     path: 'components',
     loadChildren: ()=> import('./components/components.module').then(m=> m.ComponentsModule), 
-    canLoad : [AuthGuard],
-    canActivate : [AuthGuard]
   },
   {
     path: '', 

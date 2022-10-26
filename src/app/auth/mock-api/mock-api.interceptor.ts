@@ -12,20 +12,13 @@ export class MockApiInterceptor implements HttpInterceptor
     constructor(
         @Inject(MOCK_API_DEFAULT_DELAY) private _defaultDelay: number,
         private MockApiService: MockApiService
-    )
-    {}
+    ){}
 
 
-    intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>>
-    {
-        const {
-                  handler,
-                  urlParams
-              } = this.MockApiService.findHandler(request.method.toUpperCase(), request.url);
+    intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>>    {
+        const {handler,urlParams} = this.MockApiService.findHandler(request.method.toUpperCase(), request.url);
 
-        if ( !handler ){
-            return next.handle(request);
-        }
+        if ( !handler ){return next.handle(request);}
 
         handler.request = request;
         handler.urlParams = urlParams;
@@ -57,8 +50,7 @@ export class MockApiInterceptor implements HttpInterceptor
                     return of(response);
                 }
 
-                // For other status codes,
-                // throw an error response
+
                 console.log('existe url');
                 response = new HttpErrorResponse({
                     error     : data.body.error,

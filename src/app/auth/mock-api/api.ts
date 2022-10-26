@@ -8,59 +8,20 @@ import { MockApiService } from './mock-api.service';
 @Injectable({
     providedIn: 'root'
 })
-export class AuthMockApi
-{
+export class AuthMockApi{
     private readonly _secret: any;
     private _user: any = {
         username : 'Cristian Martinez',
         email : 'cristian@gmail.com'
     };
 
-    /**
-     * Constructor
-     */
-    constructor(private _MockApiService: MockApiService)
-    {
-        // Set the mock-api
+    constructor(private _MockApiService: MockApiService) {
         this._secret = 'YOUR_VERY_CONFIDENTIAL_SECRET_FOR_SIGNING_JWT_TOKENS!!!';
-
-        // Register Mock API handlers
         this.registerHandlers();
     }
 
-    // -----------------------------------------------------------------------------------------------------
-    // @ Public methods
-    // -----------------------------------------------------------------------------------------------------
 
-    /**
-     * Register Mock API handlers
-     */
-    registerHandlers(): void
-    {
-        // -----------------------------------------------------------------------------------------------------
-        // @ Forgot password - POST
-        // -----------------------------------------------------------------------------------------------------
-        this._MockApiService
-            .onPost('api/auth/forgot-password', 1000)
-            .reply(() =>
-                [
-                    200,
-                    true
-                ]
-            );
-
-        // -----------------------------------------------------------------------------------------------------
-        // @ Reset password - POST
-        // -----------------------------------------------------------------------------------------------------
-        this._MockApiService
-            .onPost('api/auth/reset-password', 1000)
-            .reply(() =>
-                [
-                    200,
-                    true
-                ]
-            );
-
+    registerHandlers(): void    { 
         // -----------------------------------------------------------------------------------------------------
         // @ Sign in - POST
         // -----------------------------------------------------------------------------------------------------
@@ -68,11 +29,8 @@ export class AuthMockApi
             .onPost('api/auth/sign-in', 1500)
             .reply(({request}) => {
 
-                // Sign in successful
-                if ( request.body.username === 'cristian@gmail.com' && request.body.password === '12345678' )
-                {
-                    return [
-                        200,
+                if ( request.body.username === 'cristian@gmail.com' && request.body.password === '12345678' ){
+                    return [200,
                         {
                             user       : cloneDeep(this._user),
                             accessToken: this._generateJWTToken(),
@@ -81,11 +39,7 @@ export class AuthMockApi
                     ];
                 }
 
-                // Invalid credentials
-                return [
-                    404,
-                    false
-                ];
+                return [404,false];
             });
 
         // -----------------------------------------------------------------------------------------------------
@@ -95,14 +49,10 @@ export class AuthMockApi
             .onPost('api/auth/refresh-access-token')
             .reply(({request}) => {
 
-                // Get the access token
                 const accessToken = request.body.accessToken;
 
-                // Verify the token
-                if ( this._verifyJWTToken(accessToken) )
-                {
-                    return [
-                        200,
+                if ( this._verifyJWTToken(accessToken) ){
+                    return [200,
                         {
                             user       : cloneDeep(this._user),
                             accessToken: this._generateJWTToken(),
@@ -112,92 +62,26 @@ export class AuthMockApi
                 }
 
                 // Invalid token
-                return [
-                    401,
-                    {
-                        error: 'Invalid token'
-                    }
-                ];
+                return [401,{error: 'Invalid token'}];
             });
-
-        // -----------------------------------------------------------------------------------------------------
-        // @ Sign up - POST
-        // -----------------------------------------------------------------------------------------------------
-        this._MockApiService
-            .onPost('api/auth/sign-up', 1500)
-            .reply(() =>
-
-                // Simply return true
-                [
-                    200,
-                    true
-                ]
-            );
-
-        // -----------------------------------------------------------------------------------------------------
-        // @ Unlock session - POST
-        // -----------------------------------------------------------------------------------------------------
-        this._MockApiService
-            .onPost('api/auth/unlock-session', 1500)
-            .reply(({request}) => {
-
-                // Sign in successful
-                if ( request.body.email === 'hughes.brian@company.com' && request.body.password === 'admin' )
-                {
-                    return [
-                        200,
-                        {
-                            user       : cloneDeep(this._user),
-                            accessToken: this._generateJWTToken(),
-                            tokenType  : 'bearer'
-                        }
-                    ];
-                }
-
-                // Invalid credentials
-                return [
-                    404,
-                    false
-                ];
-            });
+ 
     }
 
     // -----------------------------------------------------------------------------------------------------
     // @ Private methods
     // -----------------------------------------------------------------------------------------------------
 
-    /**
-     * Return base64 encoded version of the given string
-     *
-     * @param source
-     * @private
-     */
-    private _base64url(source: any): string
-    {
-        // Encode in classical base64
+
+    private _base64url(source: any): string{
         let encodedSource = Base64.stringify(source);
-
-        // Remove padding equal characters
         encodedSource = encodedSource.replace(/=+$/, '');
-
-        // Replace characters according to base64url specifications
         encodedSource = encodedSource.replace(/\+/g, '-');
         encodedSource = encodedSource.replace(/\//g, '_');
-
-        // Return the base64 encoded string
         return encodedSource;
     }
 
-    /**
-     * Generates a JWT token using CryptoJS library.
-     *
-     * This generator is for mocking purposes only and it is NOT
-     * safe to use it in production frontend applications!
-     *
-     * @private
-     */
-    private _generateJWTToken(): string
-    {
+   
+    private _generateJWTToken(): string    {
         // Define token header
         const header = {
             alg: 'HS256',
@@ -236,12 +120,7 @@ export class AuthMockApi
         return encodedHeader + '.' + encodedPayload + '.' + signature;
     }
 
-    /**
-     * Verify the given token
-     *
-     * @param token
-     * @private
-     */
+
     private _verifyJWTToken(token: string): boolean
     {
         // Split the token into parts

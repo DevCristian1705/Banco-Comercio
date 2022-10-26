@@ -4,25 +4,15 @@ import { MOCK_API_DEFAULT_DELAY } from './mock-api.constants';
 import { MockApiInterceptor } from './mock-api.interceptor';
 
 @NgModule({
-    providers: [
-        {
-            provide : HTTP_INTERCEPTORS,
-            useClass: MockApiInterceptor,
-            multi   : true
-        }
-    ]
+    providers: [{
+        provide : HTTP_INTERCEPTORS,
+        useClass: MockApiInterceptor,
+        multi   : true
+    }]
 })
-export class MockApiModule
-{
-    /**
-     * FuseMockApi module default configuration.
-     *
-     * @param mockApiServices - Array of services that register mock API handlers
-     * @param config - Configuration options
-     * @param config.delay - Default delay value in milliseconds to apply all responses
-     */
-    static forRoot(mockApiServices: any[], config?: { delay?: number }): ModuleWithProviders<MockApiModule>
-    {
+export class MockApiModule{
+ 
+    static forRoot(mockApiServices: any[], config?: { delay?: number }): ModuleWithProviders<MockApiModule>    {
         return {
             ngModule : MockApiModule,
             providers: [
