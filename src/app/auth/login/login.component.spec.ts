@@ -1,25 +1,37 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { Router } from '@angular/router';
+import { of } from 'rxjs'; 
+import { AuthService } from '../service/auth.service';
 import { LoginComponent } from './login.component';
 
-describe('LoginComponent', () => {
+describe('@LoginComponent', () => {
   let component: LoginComponent;
-  let fixture: ComponentFixture<LoginComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ LoginComponent ]
-    })
-    .compileComponents();
-  });
+  const StubRouter = jasmine.createSpyObj<Router>('Router', ['navigate']);
+  const StubAuthService = jasmine.createSpyObj<AuthService>('AuthService', ['signIn']);
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LoginComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    component = new LoginComponent(StubRouter, StubAuthService);
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  describe('when run onLogin', () => {
+    it('#should call void onList', () => {
+      //Arrange
+      StubAuthService.signIn.and.returnValue(of('token'));
+      const spy = spyOn(component, 'onList');
+      //Act
+      component.onLogin();
+      //Assert
+      expect(spy).toHaveBeenCalled();
+    });
   });
+
+  describe('when run onList', ()=> {
+    it('#should go component lista', () => { 
+      //Act
+      component.onList();
+      //Assert
+      expect(StubRouter.navigate).toHaveBeenCalled();
+    });
+  });
+
+
 });

@@ -1,6 +1,6 @@
 .login{
     display: grid;
-    grid-template-columns: 60% 40%;
+    grid-template-columns: 60% 40%; 
 }
 
 .ImgLogin img{
@@ -10,9 +10,7 @@
 
 .Content_Form{
     display: flex;
-    align-items: center;
-    height: 100vh;
-    text-align: center;
+    align-items: center; 
     justify-content: center;
 }
 
@@ -23,6 +21,7 @@
 
 .formulario{
     display: grid;
+    text-align: left;
 }
 
 .botones{
@@ -34,21 +33,32 @@
     }
 }
 
-
-.p_olvidoContraseña{
-    text-align: right;
-    display: block;
-    padding-bottom: 10%;
+.RecordarPass{
+    text-align: left;
+    padding-bottom: 50%;
 }
 
-
+.p_olvidoContraseña{
+    margin-top: -5%;
+    text-align: right;
+    display: block;
   
-@media (max-width : 700px){
+}
+
+.Btn_Google{
+    background: #000000;
+    color: white;
+}
+  
+@media (max-width : 688px){
     .ImgLogin{
         display: none;
     }
     .login{
         display: grid;
         grid-template-columns: 1fr;
+    }
+    .formulario{
+        margin: 40% 10%;
     }
 }

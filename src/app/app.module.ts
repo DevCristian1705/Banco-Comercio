@@ -4,6 +4,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+import { MockApiModule } from './auth/mock-api/mock-api.module';
+import { AuthMockApi } from './auth/mock-api/api';
+import { AuthGuard } from './auth/mock-api/auth.guard';
 
 @NgModule({
   declarations: [
@@ -13,8 +17,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
+    MockApiModule.forRoot([AuthMockApi]),
   ],
-  providers: [],
+  providers: [
+    AuthGuard // ADDED so AuthGuard can be accessed in any routing module.
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -20,7 +20,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatRadioModule} from '@angular/material/radio';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [],
@@ -46,7 +46,9 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatSlideToggleModule,
     MatRadioModule, 
     MatProgressSpinnerModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatCardModule,
+    
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'es-ES' }]
 })
