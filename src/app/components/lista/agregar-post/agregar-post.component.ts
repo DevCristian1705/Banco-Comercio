@@ -16,7 +16,7 @@ export class AgregarPostComponent implements OnInit {
   form!: FormGroup;
   post :any;
   postLocal :any[]=[] ;
-  dataSave: any;
+
   constructor(
     public dialogRef: MatDialogRef<AgregarPostComponent>,
     @Inject(MAT_DIALOG_DATA) public data: ILista,
@@ -51,7 +51,6 @@ export class AgregarPostComponent implements OnInit {
     
     this.apiService.save(newPost).subscribe((response) => {
       if (response) {  
-        this.dataSave = response
         let myArrayLocal = JSON.parse(localStorage.getItem('posts')!);
         myArrayLocal.push(response);
         let arrayPost =  JSON.stringify(myArrayLocal);
