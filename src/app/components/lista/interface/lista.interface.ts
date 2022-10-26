@@ -33,11 +33,7 @@ export interface ISaveLista {
     title: string;
     body: string;
     userId: number;
+    id: number
 }
 
-export interface IListPost{
-    userId: number,
-    id : number,
-    title : string,
-    body : string,
-}
+ 

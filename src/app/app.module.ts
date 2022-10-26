@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MockApiModule } from './auth/mock-api/mock-api.module';
 import { AuthMockApi } from './auth/mock-api/api';
 import { AuthGuard } from './auth/mock-api/auth.guard';
+import { AuthService } from './auth/service/auth.service';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { AuthGuard } from './auth/mock-api/auth.guard';
     MockApiModule.forRoot([AuthMockApi]),
   ],
   providers: [
+    AuthService,
     AuthGuard // ADDED so AuthGuard can be accessed in any routing module.
   ],
   bootstrap: [AppComponent]

@@ -3,22 +3,23 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ListaService } from '../service/lista.service';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import { ILista } from '../interface/lista.interface';
 
 
 @Component({
   selector: 'app-agregar-post',
   templateUrl: './agregar-post.component.html',
-  styleUrls: ['./agregar-post.component.scss'], 
+  styleUrls: ['./agregar-post.component.scss'],  
 })
 export class AgregarPostComponent implements OnInit {
  
   form!: FormGroup;
   post :any;
   postLocal :any[]=[] ;
-
+  dataSave: any;
   constructor(
-    @Optional() public dialogRef: MatDialogRef<AgregarPostComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    public dialogRef: MatDialogRef<AgregarPostComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: ILista,
     private apiService: ListaService,
     private matSnackBar: MatSnackBar
   ) { 
@@ -50,6 +51,7 @@ export class AgregarPostComponent implements OnInit {
     
     this.apiService.save(newPost).subscribe((response) => {
       if (response) {  
+        this.dataSave = response
         let myArrayLocal = JSON.parse(localStorage.getItem('posts')!);
         myArrayLocal.push(response);
         let arrayPost =  JSON.stringify(myArrayLocal);

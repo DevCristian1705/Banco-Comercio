@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AgregarPostComponent } from './agregar-post/agregar-post.component';
-import { ILista, IListPost } from './interface/lista.interface';
+import { ILista, ISaveLista } from './interface/lista.interface';
 import { ListaService } from './service/lista.service';
  
 @Component({
@@ -27,7 +27,7 @@ export class ListaComponent implements OnInit {
   columnsToDisplay = ['name', 'username', 'address' , 'email', 'phone', 'post'];
   columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
   expandedElement: any
-  arraypost : IListPost[] = []; 
+  arraypost : ISaveLista[] = []; 
   tableData: ILista[] = [];
  
 

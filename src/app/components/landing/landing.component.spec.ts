@@ -1,25 +1,22 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Router } from "@angular/router";
+import { LandingComponent } from "./landing.component";
 
-import { LandingComponent } from './landing.component';
-
-describe('LandingComponent', () => {
+ 
+describe('@LandingComponent', () => {
   let component: LandingComponent;
-  let fixture: ComponentFixture<LandingComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ LandingComponent ]
-    })
-    .compileComponents();
-  });
-
+  const StubRouter = jasmine.createSpyObj<Router>('Router', ['navigate']);
+ 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LandingComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    component = new LandingComponent(StubRouter);
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  describe('when run onLogin', ()=> {
+    it('#should go component login', () => { 
+      //Act
+      component.onLogin();
+      //Assert
+      expect(StubRouter.navigate).toHaveBeenCalled();
+    });
   });
+
 });

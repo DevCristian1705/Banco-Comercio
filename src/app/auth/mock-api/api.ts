@@ -207,8 +207,8 @@ export class AuthMockApi
         // Calcular tiempo de expiracion Token
         const date = new Date();
         let minutes = date.getMinutes();
-
-        date.setMinutes(minutes + 1);
+        // 15 es los minutos que durara el token
+        date.setMinutes(minutes + 15);
         const iat = Math.floor(date.getTime() / 1000);
         const exp = Math.floor((date.setDate(date.getDate())) / 1000);
 
