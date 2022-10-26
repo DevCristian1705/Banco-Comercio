@@ -46,6 +46,8 @@ export class AgregarPostComponent implements OnInit {
       ); return;
     }
 
+    this.form.disable();
+    
     const newPost = this.form.getRawValue(); 
     newPost.userId = this.data.id 
     

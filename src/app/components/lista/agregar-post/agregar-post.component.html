@@ -28,10 +28,13 @@
                 </mat-error>
             </mat-form-field> 
             <div mat-dialog-actions align="center">
-                <button mat-raised-button color="primary" class="btn_guardar_post" (click)="onSave()" (keydown.enter)="onSave()">  
-                    <mat-icon>save</mat-icon> 
-                     GUARDAR
+                <button mat-raised-button color="primary" [disabled]="form.disabled"  class="btn_guardar_post" (click)="onSave()" (keydown.enter)="onSave()">   
+                    <mat-icon>save</mat-icon>
+                   {{ !form.disabled ? 'GUARDAR' : 'GUARDANDO....' }} 
                 </button> 
+                <mat-progress-spinner *ngIf="form.disabled" [diameter]="24" [mode]="'indeterminate'"> 
+                </mat-progress-spinner>  
+               
             </div>
         </form>
     </div>
