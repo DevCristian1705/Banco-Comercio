@@ -7,8 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { MockApiModule } from './auth/mock-api/mock-api.module';
 import { AuthMockApi } from './auth/mock-api/api';
-import { AuthGuard } from './auth/mock-api/auth.guard';
-import { AuthService } from './auth/service/auth.service';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
@@ -24,8 +22,6 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy }, 
-    AuthService,
-    AuthGuard // ADDED so AuthGuard can be accessed in any routing module.
   ],
   bootstrap: [AppComponent]
 })
