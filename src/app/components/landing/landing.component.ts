@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import * as AOS from 'aos';
 
 @Component({
   selector: 'app-landing',
@@ -16,6 +17,9 @@ export class LandingComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    AOS.init({
+      duration : 1000
+    });
   }
 
   onLista(){
