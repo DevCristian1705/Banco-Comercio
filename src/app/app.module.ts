@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MockApiModule } from './auth/mock-api/mock-api.module';
 import { AuthMockApi } from './auth/mock-api/api';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { AuthService } from './auth/service/auth.service';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy }, 
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

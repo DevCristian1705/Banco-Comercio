@@ -4,11 +4,10 @@
 
 @media (max-width : 688px){ 
 
-  .table_list{
-    margin: 0 m !important;
-  }
-
-
+    .table_list{
+      margin: 0 !important;
+    }
+ 
     ._navbar {
         grid-template-columns: 90% 10% !important;
     }
@@ -22,7 +21,7 @@
     }
   
     .grilla_bloque_footer, .bloque_cabecera{
-        margin: 0% 2% !important;
+        margin: 0% !important;
         display: grid !important;
         grid-template-columns:  1fr!important;
   
@@ -149,3 +148,5 @@
     }
 
   }
+
+  
